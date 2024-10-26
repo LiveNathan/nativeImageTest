@@ -1,5 +1,6 @@
 package dev.nathanlively.nativeImageTest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +12,12 @@ import java.util.UUID;
 @RequestMapping("/api/accounts")
 public class AccountController {
 
-//    private final EclipseAccountAdapter accountAdapter;
+    private final EclipseAccountAdapter accountAdapter;
 
-//    @Autowired
-//    public AccountController(EclipseAccountAdapter accountAdapter) {
-//        this.accountAdapter = accountAdapter;
-//    }
+    @Autowired
+    public AccountController(EclipseAccountAdapter accountAdapter) {
+        this.accountAdapter = accountAdapter;
+    }
 
     @GetMapping("/generate")
     public ResponseEntity<String> generateNewAccount() {
@@ -24,9 +25,9 @@ public class AccountController {
         String randomHashedPassword = UUID.randomUUID().toString();
 
         dev.nathanlively.nativeImageTest.domain.Account newAccount = dev.nathanlively.nativeImageTest.domain.Account.create(randomUsername, randomHashedPassword);
-//        int count = accountAdapter.save(newAccount, StorerType.EAGER);
+        int count = accountAdapter.save(newAccount, StorerType.EAGER);
 
-        String successMessage = String.format("Account with username %s created. Total accounts: %s", randomUsername, 1);
+        String successMessage = String.format("Account with username %s created. Total accounts: %s", randomUsername, count);
         return ResponseEntity.ok(successMessage);
     }
 }
