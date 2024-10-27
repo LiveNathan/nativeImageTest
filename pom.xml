@@ -64,6 +64,22 @@
 			<plugin>
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
+<!--				<configuration>-->
+<!--					<imageName>native-image-test</imageName>-->
+<!--					&lt;!&ndash; Experiment 5 &ndash;&gt;-->
+<!--					<fallback>false</fallback>-->
+<!--					<agent>-->
+<!--						<enabled>true</enabled>-->
+<!--						<metadataCopy>-->
+<!--							<merge>true</merge>-->
+<!--							<outputDirectory>META-INF/native-image</outputDirectory>-->
+<!--						</metadataCopy>-->
+<!--					</agent>-->
+<!--					<buildArgs>-->
+<!--						<buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg>-->
+<!--						<buildArg>-H:AdditionalRuntimeOptions=&#45;&#45;add-opens=java.base/java.util=ALL-UNNAMED</buildArg>-->
+<!--					</buildArgs>-->
+<!--				</configuration>-->
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
